@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <meta charset="UTF-8">
+    <title>{{{blog_name}}}</title>
+</head>
+<body>
+<h1>{{{blog_name}}}</h1>
+<p>{{blog_bio}}</p>
+<br>
+<br>
+
+<ul>
+{{#article_list}}
+    <li>{{.}}</li>
+{{/article_list}}
+</ul>
+
+</body>
+</html>
