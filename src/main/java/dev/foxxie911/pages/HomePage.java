@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class HomePage {
 
-    private static final Logger logger = Logger.getLogger("HomePage.class");
+    private static final Logger LOGGER = Logger.getLogger("HomePage.class");
     private static final Path HTML_PATH = Path.of("./public");
     private static final String MUSTACHE_PATH = "mustaches/home.mustache";
     private static final String BLOG_NAME = "Foxxie's Den";
@@ -32,6 +32,14 @@ public class HomePage {
 
     public void buildHomePage() {
         Mustache m = new DefaultMustacheFactory().compile(MUSTACHE_PATH);
+
+        if(Files.notExists(HTML_PATH)){
+            try {
+                Files.createDirectory(HTML_PATH);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         List<String> articleTitles = articleList.stream()
                 .map(Article::title)
@@ -53,7 +61,7 @@ public class HomePage {
                     StandardOpenOption.TRUNCATE_EXISTING
             );
         } catch (IOException e) {
-            logger.severe("Failed to generate: home.html");
+            LOGGER.severe("Failed to generate: home.html");
             throw new UncheckedIOException(e);
         }
     }
