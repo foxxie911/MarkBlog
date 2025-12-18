@@ -34,7 +34,7 @@ public class ArticleBuilder{
         String fileName = String.valueOf(filePath.getFileName());
         String[] dateNTitle = fileName.split("_");
 
-        String title = dateNTitle[1];
+        String title = dateNTitle[1].substring(0, dateNTitle[1].lastIndexOf('.'));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate createdAt = LocalDate.parse(dateNTitle[0], formatter);
