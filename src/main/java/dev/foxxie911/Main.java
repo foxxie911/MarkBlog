@@ -1,7 +1,19 @@
 package dev.foxxie911;
 
-public class Main {
-    static void main() {
+import dev.foxxie911.models.Article;
+import dev.foxxie911.pages.ArticlePage;
+import dev.foxxie911.pages.HomePage;
+import dev.foxxie911.services.ArticleLister;
 
+import java.io.IOException;
+import java.util.List;
+
+public class Main {
+    static void main() throws IOException {
+        ArticleLister lister = new ArticleLister();
+        List<Article> list = lister.listArticle();
+
+        new HomePage(list).buildHomePage();
+        new ArticlePage(list).buildArticlePage();
     }
 }
