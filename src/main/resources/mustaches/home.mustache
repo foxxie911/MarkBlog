@@ -16,7 +16,9 @@
     <h2>Articles</h2>
     <ul>
         {{#article_list}}
-            <li><a href="./articles/{{{.}}}.html">{{{.}}}</a></li>
+            <li>
+                <a href="./articles/{{{link}}}">{{{title}}}</a>
+            </li>
         {{/article_list}}
     </ul>
 </div>

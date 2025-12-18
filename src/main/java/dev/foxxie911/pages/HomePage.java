@@ -3,6 +3,7 @@ package dev.foxxie911.pages;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import dev.foxxie911.models.Article;
+import dev.foxxie911.models.ArticleList;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 
 public class HomePage {
 
+    // TODO enable .env support
     private static final Logger LOGGER = Logger.getLogger("HomePage.class");
     private static final Path HTML_PATH = Path.of("./public");
     private static final String MUSTACHE_PATH = "mustaches/home.mustache";
@@ -41,14 +43,21 @@ public class HomePage {
             }
         }
 
-        List<String> articleTitles = articleList.stream()
-                .map(Article::title)
-                .toList();
+        List<ArticleList> articleInfo = articleList.stream()
+                .map(article -> {
+                    String title = article.title();
+                    int year = article.createdAt().getYear();
+                    String month = article.createdAt().getMonth().toString();
+                    String link =  year + "/" + month + "/" + title + ".html";
+                    return new ArticleList(title, link);
+                })
+                .toList()
+                .reversed();
 
         Map<String, Object> context = Map.of(
                 "blog_name", BLOG_NAME,
                 "blog_bio", BLOG_BIO,
-                "article_list", articleTitles
+                "article_list", articleInfo
         );
 
         try (StringWriter writer = new StringWriter()) {
