@@ -2,17 +2,21 @@
 <html lang="en_US">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style.css">
     <title>{{{blog_name}}}</title>
 </head>
 <body>
+<nav>
+    <a href="../home.html">{{{blog_name}}}</a>
+</nav>
 {{#article}}
-    <section>
+    <div class="article_info">
         <h1>{{{title}}}</h1>
         <small>{{createdAt}}</small>
-    </section>
-    <section>
+    </div>
+    <div class="article_body">
         {{{body}}}
-    </section>
+    </div>
 {{/article}}
 </body>
 </html>

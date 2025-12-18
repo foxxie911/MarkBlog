@@ -2,17 +2,24 @@
 <html lang="en_US">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style.css">
     <title>{{{blog_name}}}</title>
 </head>
 <body>
-<h1>{{{blog_name}}}</h1>
-<p>{{blog_bio}}</p>
-<br>
-<ul>
-{{#article_list}}
-    <li><a href="./articles/{{{.}}}.html">{{{.}}}</a></li>
-{{/article_list}}
-</ul>
+
+<div class="blog_info">
+    <h1 class="blog_name">{{{blog_name}}}</h1>
+    <p class="blog_bio">{{blog_bio}}</p>
+</div>
+
+<div class="article_list">
+    <h2>Articles</h2>
+    <ul>
+        {{#article_list}}
+            <li><a href="./articles/{{{.}}}.html">{{{.}}}</a></li>
+        {{/article_list}}
+    </ul>
+</div>
 
 </body>
 </html>
