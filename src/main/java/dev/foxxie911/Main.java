@@ -16,5 +16,6 @@ public class Main {
 
         new HomePage(list).buildHomePage();
         new ArticlePage(list).buildArticlePage();
+
     }
 }

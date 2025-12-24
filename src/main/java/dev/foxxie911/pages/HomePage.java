@@ -4,6 +4,7 @@ import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import dev.foxxie911.models.Article;
 import dev.foxxie911.models.ArticleList;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -11,6 +12,7 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +20,9 @@ import java.util.logging.Logger;
 
 public class HomePage {
 
-    // TODO enable .env support
+    private static final Dotenv DOTENV = Dotenv.load();
     private static final Logger LOGGER = Logger.getLogger("HomePage.class");
-    private static final Path HTML_PATH = Path.of("./public");
     private static final String MUSTACHE_PATH = "mustaches/home.mustache";
-    private static final String BLOG_NAME = "Foxxie's Den";
-    private static final String BLOG_BIO = "Here I write about my analysis, understanding and feelings as well. " +
-            "That could be related to technology, Islam, philosophy, economics or anything else";
     private final List<Article> articleList;
 
 
@@ -33,11 +31,22 @@ public class HomePage {
     }
 
     public void buildHomePage() {
+        String blogName = DOTENV.get("BLOG_NAME");
+        String blogBio = DOTENV.get("BLOG_BIO");
+
+        String dir = DOTENV.get("SITE_PATH");
+
+        if (dir.startsWith("~")) {
+            dir = System.getProperty("user.home") + dir.substring(1);
+        }
+
+        Path htmlPath = Paths.get(dir).toAbsolutePath();
+
         Mustache m = new DefaultMustacheFactory().compile(MUSTACHE_PATH);
 
-        if(Files.notExists(HTML_PATH)){
+        if (Files.notExists(htmlPath)) {
             try {
-                Files.createDirectory(HTML_PATH);
+                Files.createDirectory(htmlPath);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -55,15 +64,15 @@ public class HomePage {
                 .reversed();
 
         Map<String, Object> context = Map.of(
-                "blog_name", BLOG_NAME,
-                "blog_bio", BLOG_BIO,
+                "blog_name", blogName,
+                "blog_bio", blogBio,
                 "article_list", articleInfo
         );
 
         try (StringWriter writer = new StringWriter()) {
             m.execute(writer, context).flush();
             Files.writeString(
-                    HTML_PATH.resolve("home.html"),
+                    htmlPath.resolve("index.html"),
                     writer.toString(),
                     StandardCharsets.UTF_8,
                     StandardOpenOption.CREATE,
