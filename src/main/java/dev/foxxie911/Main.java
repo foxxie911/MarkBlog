@@ -4,6 +4,7 @@ import dev.foxxie911.models.Article;
 import dev.foxxie911.pages.ArticlePage;
 import dev.foxxie911.pages.HomePage;
 import dev.foxxie911.services.ArticleLister;
+import dev.foxxie911.services.AssetProvider;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Main {
 
         new HomePage(list).buildHomePage();
         new ArticlePage(list).buildArticlePage();
-
+        new AssetProvider().copyFontsFiles();
+        new AssetProvider().copyStyleSheet();
     }
 }

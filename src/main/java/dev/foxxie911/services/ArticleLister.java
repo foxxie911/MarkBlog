@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class ArticleLister {
     private static final Dotenv DOTENV = Dotenv.load();
-    private static final Logger logger = Logger.getLogger("ArticleLister.class");
+    private static final Logger LOGGER = Logger.getLogger("ArticleLister.class");
 
     public ArticleLister() {
     }
@@ -28,7 +28,7 @@ public class ArticleLister {
         Path articlePath = Paths.get(articleDir).toAbsolutePath();
 
         if (Files.notExists(articlePath)) {
-            logger.warning("No files found in the \"" + articlePath + "\"");
+            LOGGER.warning("No files found in the \"" + articlePath + "\"");
             return List.of();
         }
 
