@@ -57,7 +57,7 @@ public class HomePage {
                     String title = article.title();
                     int year = article.createdAt().getYear();
                     String month = article.createdAt().getMonth().toString();
-                    String link =  year + "/" + month + "/" + title + ".html";
+                    String link =  year + "/" + month + "/" + title.replaceAll("[\\p{Punct}\\s]", "") + ".html";
                     return new ArticleList(title, link);
                 })
                 .toList()

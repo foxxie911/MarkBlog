@@ -65,7 +65,8 @@ public class ArticlePage {
                 try (StringWriter writer = new StringWriter()) {
                     m.execute(writer, context).flush();
                     Files.writeString(
-                            articlePagePath.resolve(article.title() + ".html"),
+                            articlePagePath.resolve(article.title()
+                                    .replaceAll("[\\p{Punct}\\s]", "") + ".html"),
                             writer.toString(),
                             StandardCharsets.UTF_8,
                             StandardOpenOption.CREATE,

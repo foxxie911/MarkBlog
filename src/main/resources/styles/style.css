@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Hack Nerd Regular";
-  src: url("/fonts/HackNerdFont-Regular.ttf") format("ttf");
+  src: url("../fonts/HackNerdFont-Regular.ttf") format("ttf");
   font-style: normal;
   font-display: swap;
 }
@@ -166,7 +166,7 @@ code {
 
 @media (max-width: 768px) {
   body {
-    padding: 5rem;
+    padding: 1.5rem;
   }
   h1 {
     font-size: 2rem;
@@ -184,7 +184,7 @@ code {
     font-size: 1.1rem;
   }
   p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 
