@@ -186,6 +186,22 @@ code {
   p {
     font-size: 1rem;
   }
+  ul,
+  ol {
+    margin: 0.75rem 0;
+    padding-left: 1.25rem;
+    line-height: 1.6;
+  }
+  li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    word-wrap: break-word;
+  }
+  li ul,
+  li ol {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
