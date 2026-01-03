@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en_US">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../styles/style.css">
     <title>{{{blog_name}}}</title>
 </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{#article}}
+    <title>{{{title}}} | {{{blog_name}}}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{{title}}}">
+    <meta property="og:site_name" content="{{{blog_name}}}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{{title}}}">
+
+    <!-- Article structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{{title}}}",
+      "datePublished": "{{{createdAt}}}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{{blog_name}}}"
+      },
+    }
+    </script>
+    {{/article}}
+
+    <link rel="stylesheet" href="../../../styles/style.css">
+</head>
+
 <body>
 <nav>
     <a href="../../../index.html">{{{blog_name}}}</a>
