@@ -1,0 +1,225 @@
+@use "sass:color";
+@use "fonts";
+
+$primary-bg-color: #191a19;
+$primary-text-color: #d8e9a8;
+$accent-color: #1e5128;
+
+$font-family: "Hack Nerd Regular", monospace;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $primary-bg-color;
+    color: $primary-text-color;
+    font-family: $font-family;
+    padding: 5rem 16rem;
+    line-height: 1.6;
+}
+
+nav {
+    margin-bottom: 5rem;
+
+    a {
+        font-size: 1.5rem;
+    }
+}
+
+h1,
+p {
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: $accent-color;
+}
+
+h2 {
+    font-size: 2rem;
+    color: $primary-text-color;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    color: $accent-color;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: color.adjust($accent-color, $lightness: 20%);
+}
+
+ul,
+ol {
+    margin: 1.5rem 0rem;
+    line-height: 2;
+}
+
+ul {
+    list-style-type: "-";
+}
+
+blockquote {
+    background-color: color.adjust($primary-bg-color, $lightness: 10%);
+    color: $primary-text-color;
+    border-left: 0.5rem solid $accent-color;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    line-height: 1.6;
+    border-radius: 0.25rem;
+
+    p {
+        margin: 0;
+    }
+
+    /* cite {
+        display: block;
+        margin-top: 0.75rem;
+        font-style: normal;
+        font-size: 0.875rem;
+        color: lighten($primary-text-color, 15%);
+        text-align: right;
+
+        &::before {
+            content: "— ";
+        }
+    } */
+}
+
+pre {
+    background-color: color.adjust($primary-bg-color, $lightness: 10%);
+    padding: 1.25rem;
+    border-radius: 1rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+
+    code {
+        margin: 0;
+    }
+}
+
+code {
+    font-family: "Fira Code", "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: $primary-text-color;
+    background: none;
+    white-space: pre;
+}
+
+.blog_info {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.blog_name {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.blog_bio {
+    font-size: 1.2rem;
+}
+
+.article_list {
+    ul {
+        list-style-type: "-> ";
+    }
+}
+
+.article_info {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom-style: solid;
+    border-color: $accent-color;
+    border-width: thin;
+
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.article_body {
+    ul,
+    ol {
+        margin-left: 5rem;
+    }
+
+    ul {
+        list-style-type: ">> ";
+    }
+}
+
+@media (max-width: 768px) {
+    
+  body {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    ul,
+    ol {
+      margin: 0.75rem 0;
+      padding-left: 1.25rem;
+      line-height: 1.6;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem; 
+      word-wrap: break-word;
+    }
+
+    li ul,
+    li ol {
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+}
