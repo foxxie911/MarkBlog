@@ -1,24 +1,19 @@
 package dev.foxxie911.config;
 
-import dev.foxxie911.exception.ConfigurationException;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
-import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BlogConfigurationTest {
-    
-    @TempDir
-    Path tempDir;
-    
+
+    private static void execute() {
+        BlogConfiguration config = new BlogConfiguration();
+        assertNotNull(config);
+    }
+
     @Test
     void testValidConfiguration() {
-         assertDoesNotThrow(() -> {
-             BlogConfiguration config = new BlogConfiguration();
-             assertNotNull(config);
-         });
+         assertDoesNotThrow(BlogConfigurationTest::execute);
     }
     
     @Test

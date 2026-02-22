@@ -5,16 +5,7 @@ package dev.foxxie911.exception;
  * Used when required configuration properties are missing, invalid, or malformed.
  */
 public class ConfigurationException extends MarkBlogException {
-    
-    /**
-     * Constructs a new ConfigurationException with the specified detail message.
-     * 
-     * @param message the detail message
-     */
-    public ConfigurationException(String message) {
-        super(message);
-    }
-    
+
     /**
      * Constructs a new ConfigurationException with the specified detail message and cause.
      * 
