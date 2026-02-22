@@ -1,15 +1,5 @@
 package dev.foxxie911.service;
 
-import dev.foxxie911.exception.FileProcessingException;
-import dev.foxxie911.models.Article;
-import org.apache.commons.lang3.StringUtils;
-import org.commonmark.node.Node;
-import org.commonmark.parser.Parser;
-import org.commonmark.renderer.html.HtmlRenderer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -18,6 +8,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
+
+import javax.inject.Singleton;
+
+import org.apache.commons.lang3.StringUtils;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dev.foxxie911.exception.FileProcessingException;
+import dev.foxxie911.models.Article;
 
 /**
  * Service implementation for parsing Markdown article files.

@@ -1,25 +1,27 @@
 package dev.foxxie911;
 
-import org.picocontainer.MutablePicoContainer;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import org.picocontainer.DefaultPicoContainer;
+import org.picocontainer.MutablePicoContainer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import dev.foxxie911.config.BlogConfiguration;
 import dev.foxxie911.exception.ConfigurationException;
 import dev.foxxie911.exception.FileProcessingException;
 import dev.foxxie911.exception.MarkBlogException;
 import dev.foxxie911.models.Article;
+import dev.foxxie911.repository.ArticleRepository;
 import dev.foxxie911.repository.FileSystemArticleRepository;
 import dev.foxxie911.service.ArticleParsingService;
-import dev.foxxie911.service.MarkdownParsingService;
-import dev.foxxie911.service.TemplateRenderingService;
-import dev.foxxie911.repository.ArticleRepository;
 import dev.foxxie911.service.AssetManagementService;
+import dev.foxxie911.service.MarkdownParsingService;
 import dev.foxxie911.service.PageGenerationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import java.util.List;
+import dev.foxxie911.service.TemplateRenderingService;
 
 /**
  * Main application class that orchestrates the blog generation process.

@@ -1,10 +1,12 @@
 # MarkBlog
 
+*A modern static blog generator with automated code quality enforcement*
+
 [![Java Version](https://img.shields.io/badge/Java-25-orange.svg)](https://adoptium.net/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/foxxie911/MarkBlog/ci.yml?branch=main)](https://github.com/foxxie911/MarkBlog/actions)
-[![Issues](https://img.shields.io/github/issues/foxxie911/MarkBlog)](https://github.com/foxxie911/MarkBlog/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/foxxie911/MarkBlog)](https://github.com/foxxie911/MarkBlog/commits/main)
+[![Code Style](https://img.shields.io/badge/code%20style-spotless-brightgreen)](https://github.com/diffplug/spotless)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/foxxie911/MarkBlog)
+[![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)](https://github.com/foxxie911/MarkBlog)
 
 A modern, lightweight static blog generator that transforms Markdown articles into beautifully formatted HTML websites using Mustache templating.
 
@@ -16,6 +18,7 @@ A modern, lightweight static blog generator that transforms Markdown articles in
 - **Environment Configuration**: Dotenv support for flexible deployment configurations
 - **Modern Java**: Built with Java 25 and contemporary best practices
 - **Comprehensive Testing**: Full test coverage with JUnit 5 and Mockito
+- **Code Quality Enforcement**: Automated formatting with Spotless plugin and static analysis with Checkstyle
 - **Dependency Injection**: Clean architecture using PicoContainer
 
 ## Quick Start
@@ -33,8 +36,11 @@ A modern, lightweight static blog generator that transforms Markdown articles in
 git clone https://github.com/foxxie911/MarkBlog.git
 cd MarkBlog
 
-# Build the project
+# Build the project with code quality checks
 mvn clean install
+
+# Verify code formatting
+mvn spotless:check
 
 # Run tests
 mvn test
@@ -55,9 +61,10 @@ ARTICLE_PATH=/path/to/markdown/articles
 
 ```bash
 # Generate your static blog
-mvn exec:java -Dexec.mainClass="dev.foxxie911.BlogGeneratorApplication"
+mvn compile exec:java -Dexec.mainClass="dev.foxxie911.BlogGeneratorApplication"
 
-# Or run directly
+# Or create and run executable JAR
+mvn package
 java -jar target/MarkBlog-1.0-SNAPSHOT.jar
 ```
 
@@ -68,22 +75,21 @@ MarkBlog/
 ├── src/
 │   ├── main/
 │   │   ├── java/dev/foxxie911/
-│   │   │   ├── application/          # Main application logic
-│   │   │   ├── config/               # Configuration management
-│   │   │   ├── exception/            # Custom exceptions
-│   │   │   ├── models/               # Data models (Article, ArticleList)
-│   │   │   ├── pages/                # Page generation logic
-│   │   │   ├── repository/           # Data access layer
-│   │   │   ├── service/              # Business logic services
-│   │   │   └── Main.java             # Application entry point
+│   │   │   ├── BlogGeneratorApplication.java  # Main application class
+│   │   │   ├── config/                        # Configuration management
+│   │   │   ├── exception/                     # Custom exceptions
+│   │   │   ├── models/                        # Data models (Article, ArticleList)
+│   │   │   ├── repository/                    # Data access layer
+│   │   │   └── service/                       # Business logic services
 │   │   └── resources/
-│   │       ├── mustaches/            # Mustache templates
-│   │       └── styles/               # CSS stylesheets
-│   └── test/                         # Unit and integration tests
-├── .env                              # Environment configuration
-├── pom.xml                           # Maven configuration
-├── README.md                         # This file
-└── LICENSE                           # License
+│   │       ├── mustaches/                     # Mustache templates
+│   │       └── styles/                        # CSS stylesheets
+│   └── test/                                  # Unit and integration tests
+├── .env                                       # Environment configuration
+├── .editorconfig                              # Editor configuration
+├── pom.xml                                    # Maven configuration
+├── README.md                                  # This file
+└── LICENSE                                    # License
 ```
 
 ## Architecture
@@ -92,11 +98,13 @@ MarkBlog follows a clean architecture pattern with clear separation of concerns:
 
 ### Core Components
 
-- **Article Repository**: Manages article storage and retrieval
-- **Markdown Parser**: Converts Markdown content to HTML using CommonMark
-- **Template Renderer**: Processes Mustache templates with dynamic data
-- **Page Generator**: Creates HTML pages from articles and templates
-- **Asset Manager**: Handles static resource copying (CSS, fonts, etc.)
+- **BlogGeneratorApplication**: Main application orchestrator
+- **Article Repository**: Manages article storage and retrieval (FileSystemArticleRepository)
+- **Markdown Parser**: Converts Markdown content to HTML using CommonMark (MarkdownParsingService)
+- **Template Renderer**: Processes Mustache templates with dynamic data (TemplateRenderingService)
+- **Page Generator**: Creates HTML pages from articles and templates (PageGenerationService)
+- **Asset Manager**: Handles static resource copying (CSS, fonts, etc.) (AssetManagementService)
+- **Configuration**: Environment-based configuration management (BlogConfiguration)
 
 ### Dependency Injection
 
@@ -107,7 +115,7 @@ The project uses PicoContainer for dependency injection, providing:
 
 ## Development
 
-### Building
+### Building and Testing
 
 ```bash
 # Compile the project
@@ -116,14 +124,18 @@ mvn compile
 # Run tests
 mvn test
 
+# Check code formatting
+mvn spotless:check
+
+# Apply automatic formatting fixes
+mvn spotless:apply
+
 # Create executable JAR
 mvn package
 
 # Install to local repository
 mvn install
 ```
-
-### Testing
 
 The project includes comprehensive tests covering:
 - Unit tests for individual components
@@ -144,14 +156,17 @@ mvn jacoco:report
 ### Code Quality
 
 ```bash
-# Check for code issues
+# Check code formatting and import ordering
+mvn spotless:check
+
+# Automatically fix formatting issues
+mvn spotless:apply
+
+# Run static code analysis (uses simplified configuration)
 mvn checkstyle:check
 
-# Run static analysis
-mvn spotbugs:check
-
-# Verify security vulnerabilities
-mvn dependency-check:check
+# Run all tests to ensure code quality
+mvn test
 ```
 
 ## Contributing
@@ -168,6 +183,7 @@ Contributions are welcome! Here's how you can help:
 
 - Follow existing code style and conventions
 - Write tests for new functionality
+- Run `mvn spotless:check` to ensure proper formatting
 - Update documentation as needed
 - Ensure all tests pass before submitting PR
 - Use descriptive commit messages
@@ -177,6 +193,7 @@ Contributions are welcome! Here's how you can help:
 ### System Requirements
 
 - **Java**: Version 25 or higher
+- **Maven**: Version 3.8 or higher
 - **Memory**: Minimum 512MB RAM
 - **Storage**: Depends on number of articles (typically < 100MB)
 
@@ -248,7 +265,7 @@ This project is licensed under the GPL v3.0 License - see the [LICENSE](LICENSE)
 
 ## Authors
 
-- **Foxxie911** - *Initial work* - [foxxie911](https://github.com/foxxie911)
+- **foxxie911** - *Initial work* - [foxxie911](https://github.com/foxxie911)
 
 ## Acknowledgments
 

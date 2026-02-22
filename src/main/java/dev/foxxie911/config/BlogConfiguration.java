@@ -1,10 +1,11 @@
 package dev.foxxie911.config;
 
-import io.github.cdimascio.dotenv.Dotenv;
-import org.apache.commons.lang3.StringUtils;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import org.apache.commons.lang3.StringUtils;
+
+import io.github.cdimascio.dotenv.Dotenv;
 
 /**
  * Configuration class that encapsulates all blog settings and environment variables.

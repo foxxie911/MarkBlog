@@ -1,16 +1,18 @@
 package dev.foxxie911.service;
 
-import dev.foxxie911.config.BlogConfiguration;
-import dev.foxxie911.exception.FileProcessingException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+
 import javax.annotation.Nonnull;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dev.foxxie911.config.BlogConfiguration;
+import dev.foxxie911.exception.FileProcessingException;
 
 /**
  * Service for managing static assets like CSS files and fonts.

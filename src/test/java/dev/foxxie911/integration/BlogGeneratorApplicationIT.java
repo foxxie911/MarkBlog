@@ -1,9 +1,10 @@
 package dev.foxxie911.integration;
 
-import dev.foxxie911.BlogGeneratorApplication;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import dev.foxxie911.BlogGeneratorApplication;
 
 public class BlogGeneratorApplicationIT {
     

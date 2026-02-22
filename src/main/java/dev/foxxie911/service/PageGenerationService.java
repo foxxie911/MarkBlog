@@ -1,14 +1,5 @@
 package dev.foxxie911.service;
 
-import dev.foxxie911.config.BlogConfiguration;
-import dev.foxxie911.exception.FileProcessingException;
-import dev.foxxie911.models.Article;
-import dev.foxxie911.models.ArticleList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -18,6 +9,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dev.foxxie911.config.BlogConfiguration;
+import dev.foxxie911.exception.FileProcessingException;
+import dev.foxxie911.models.Article;
+import dev.foxxie911.models.ArticleList;
 
 /**
  * Service for generating HTML pages from templates and article data.

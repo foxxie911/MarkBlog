@@ -1,10 +1,10 @@
 package dev.foxxie911.service;
 
-import dev.foxxie911.exception.FileProcessingException;
-import dev.foxxie911.models.Article;
-
 import java.nio.file.Path;
 import java.util.Optional;
+
+import dev.foxxie911.exception.FileProcessingException;
+import dev.foxxie911.models.Article;
 
 /**
  * Service interface for parsing article files.

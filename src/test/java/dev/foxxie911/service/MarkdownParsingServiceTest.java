@@ -1,10 +1,6 @@
 package dev.foxxie911.service;
 
-import dev.foxxie911.exception.FileProcessingException;
-import dev.foxxie911.models.Article;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +8,12 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import dev.foxxie911.exception.FileProcessingException;
+import dev.foxxie911.models.Article;
 
 public class MarkdownParsingServiceTest {
     

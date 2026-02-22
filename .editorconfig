@@ -1,0 +1,64 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Java files - 4 spaces, 120 char limit
+[*.java]
+max_line_length = 120
+
+# XML files - 2 spaces
+[*.xml]
+indent_size = 2
+
+# JSON files - 2 spaces
+[*.json]
+indent_size = 2
+
+# YAML files - 2 spaces
+[*.{yml,yaml}]
+indent_size = 2
+
+# Markdown files - preserve trailing whitespace in some cases
+[*.md]
+trim_trailing_whitespace = false
+
+# Shell scripts - 2 spaces
+[*.sh]
+indent_size = 2
+
+# Configuration files - 2 spaces
+[*.{conf,config}]
+indent_size = 2
+
+# CSS/SCSS files - 2 spaces
+[*.{css,scss,sass}]
+indent_size = 2
+
+# JavaScript/TypeScript files - 2 spaces
+[*.{js,ts,jsx,tsx}]
+indent_size = 2
+
+# HTML files - 2 spaces
+[*.html]
+indent_size = 2
+
+# Makefiles use tabs
+[Makefile]
+indent_style = tab
+
+# Git files
+[.gitattributes]
+indent_size = 2
+
+[.gitignore]
+indent_size = 2

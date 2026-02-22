@@ -1,9 +1,9 @@
 package dev.foxxie911.repository;
 
+import java.util.List;
+
 import dev.foxxie911.exception.FileProcessingException;
 import dev.foxxie911.models.Article;
-
-import java.util.List;
 
 /**
  * Repository interface for article data access operations.

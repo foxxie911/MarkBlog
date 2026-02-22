@@ -1,14 +1,5 @@
 package dev.foxxie911.repository;
 
-import dev.foxxie911.config.BlogConfiguration;
-import dev.foxxie911.exception.FileProcessingException;
-import dev.foxxie911.models.Article;
-import dev.foxxie911.service.ArticleParsingService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,6 +7,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dev.foxxie911.config.BlogConfiguration;
+import dev.foxxie911.exception.FileProcessingException;
+import dev.foxxie911.models.Article;
+import dev.foxxie911.service.ArticleParsingService;
 
 /**
  * File system implementation of ArticleRepository.

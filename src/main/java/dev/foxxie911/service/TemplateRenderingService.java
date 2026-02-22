@@ -1,15 +1,17 @@
 package dev.foxxie911.service;
 
-import com.github.mustachejava.DefaultMustacheFactory;
-import com.github.mustachejava.Mustache;
-import com.github.mustachejava.MustacheFactory;
-import dev.foxxie911.exception.FileProcessingException;
-
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Map;
+
+import javax.inject.Singleton;
+
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
+
+import dev.foxxie911.exception.FileProcessingException;
 
 /**
  * Service for rendering templates using Mustache.
